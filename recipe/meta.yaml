@@ -12,31 +12,53 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rJava_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
+
+
   sha256: dada5e031414da54eb80b9024d51866c20b92d41d68da65789fe0130bc54bd8a
+  patches:
+    - 0001-Improve-lib-jvm.-so-dylib-dll-loading.patch
 
 build:
+  # If this is a new build for the same version, increment the build number.
   number: 0
-  skip: true  # [win]
+
+  # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
+  script_env:
+    - JAVA_HOME
+
 requirements:
   build:
     - r-base
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
-    - openjdk
+    - {{ compiler('c') }}                # [not win]
+    - {{native}}toolchain                # [win]
+    - {{posix}}curl                      # [win]
+    - {{posix}}filesystem                # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{ cdt('java-1.7.0-openjdk') }}        # [linux]
+    - {{ cdt('java-1.7.0-openjdk-devel') }}  # [linux]
 
   run:
     - r-base
-    - openjdk
+    - {{native}}gcc-libs                 # [win]
 
 test:
   commands:
-    - $R -e "library('rJava')"  # [not win]
+    # You can put additional test commands to be run here.
+    - $R -e "library('rJava')"           # [not win]
     - "\"%R%\" -e \"library('rJava')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
 
 about:
   home: http://www.rforge.net/rJava/
@@ -47,6 +69,28 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
     - bgruening
+    - johanneskoester
+    - mingwandroid
     - sodre
+
+# The original CRAN metadata for this package was:
+
+# Package: rJava
+# Version: 0.9-8
+# Title: Low-Level R to Java Interface
+# Author: Simon Urbanek <simon.urbanek@r-project.org>
+# Maintainer: Simon Urbanek <simon.urbanek@r-project.org>
+# Depends: R (>= 2.5.0), methods
+# Description: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation of objects, calling methods and accessing fields.
+# License: GPL-2
+# URL: http://www.rforge.net/rJava/
+# SystemRequirements: Java JDK 1.2 or higher (for JRI/REngine JDK 1.4 or higher), GNU make
+# NeedsCompilation: yes
+# Packaged: 2015-11-16 02:41:10 UTC; svnuser
+# Repository: CRAN
+# Date/Publication: 2016-01-07 15:09:40
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
