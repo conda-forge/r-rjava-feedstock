@@ -1,4 +1,4 @@
-{% set version = '0.9-8' %}
+{% set version = '0.9-9' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,9 +12,9 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rJava_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
+  sha256: 932b153f2b5c546d614bb5ac4124df3d103c9f8e09a608a14fd036dfe15e9146
 
 
-  sha256: dada5e031414da54eb80b9024d51866c20b92d41d68da65789fe0130bc54bd8a
   patches:
     - 0001-Improve-lib-jvm.-so-dylib-dll-loading.patch
 
@@ -77,7 +77,7 @@ extra:
 # The original CRAN metadata for this package was:
 
 # Package: rJava
-# Version: 0.9-8
+# Version: 0.9-9
 # Title: Low-Level R to Java Interface
 # Author: Simon Urbanek <simon.urbanek@r-project.org>
 # Maintainer: Simon Urbanek <simon.urbanek@r-project.org>
@@ -87,9 +87,9 @@ extra:
 # URL: http://www.rforge.net/rJava/
 # SystemRequirements: Java JDK 1.2 or higher (for JRI/REngine JDK 1.4 or higher), GNU make
 # NeedsCompilation: yes
-# Packaged: 2015-11-16 02:41:10 UTC; svnuser
+# Packaged: 2017-10-12 07:21:38 UTC; ripley
 # Repository: CRAN
-# Date/Publication: 2016-01-07 15:09:40
+# Date/Publication: 2017-10-12 10:54:13 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
