@@ -38,7 +38,8 @@ requirements:
     - {{posix}}curl                      # [win]
     - {{posix}}filesystem                # [win]
     - {{posix}}autoconf
-    - {{posix}}automake
+    - {{posix}}automake-wrapper          # [win]
+    - {{posix}}automake                  # [not win]
     - {{posix}}pkg-config
     - {{posix}}make
     - {{ cdt('java-1.7.0-openjdk') }}        # [linux]
