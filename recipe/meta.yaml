@@ -52,7 +52,9 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('rJava')"           # [not win]
+    # TODO :: We need a variable with the CDT sysroot to add to LD_LIBRARY_PATH
+    #      .. for now, you need to sudo yum install java-1.7.0-openjdk
+    - $R -e "library('rJava')"           # [osx]
     - "\"%R%\" -e \"library('rJava')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
