@@ -26,20 +26,20 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
-
   script_env:
     - JAVA_HOME
 
 requirements:
   build:
     - r-base
-    - {{ compiler('c') }}                # [not win]
-    - {{native}}toolchain                # [win]
-    - {{posix}}curl                      # [win]
-    - {{posix}}filesystem                # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
     - {{posix}}autoconf
-    - {{posix}}automake-wrapper          # [win]
-    - {{posix}}automake                  # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}automake          # [not win]
     - {{posix}}pkg-config
     - {{posix}}make
     - {{ cdt('java-1.7.0-openjdk') }}        # [linux]
@@ -47,14 +47,14 @@ requirements:
 
   run:
     - r-base
-    - {{native}}gcc-libs                 # [win]
+    - {{native}}gcc-libs         # [win]
 
 test:
+  requires:
+    - openjdk  # [linux]
   commands:
     # You can put additional test commands to be run here.
-    # TODO :: We need a variable with the CDT sysroot to add to LD_LIBRARY_PATH
-    #      .. for now, you need to sudo yum install java-1.7.0-openjdk
-    - $R -e "library('rJava')"           # [osx]
+    - $R -e "library('rJava')"           # [not win]
     - "\"%R%\" -e \"library('rJava')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
