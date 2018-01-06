@@ -87,6 +87,7 @@ else
   DEST="$2"/$1/broken/${DIR}
   echo "Failue, writing logs and system/java information to ${DEST}"
 fi
+[[ -d ${DEST} ]] || mkdir -p ${DEST}
 
 # WIP WIP WIP (remove this)
 # Test against the new WIP javareconf in the folder of this script
@@ -103,8 +104,6 @@ if [[ -f ${THIS_DIR}/javareconf.3.4.3.WIP ]]; then
   mv ${CONDA_PREFIX}/lib/R/bin/javareconf.orig ${CONDA_PREFIX}/lib/R/bin/javareconf
 fi
 # END WIP END WIP END WIP
-
-[[ -d ${DEST} ]] || mkdir -p ${DEST}
 
 cp /tmp/R-CMD-javareconf.log ${DEST}/
 cp /tmp/rJava-_jinit.log ${DEST}/
