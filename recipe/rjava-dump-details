@@ -2,22 +2,66 @@
 
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+CLEAN=no
+VERY_CLEAN=no
+LOCAL=no
+
 echo ""
 echo "rJava test and debug script"
-echo "args: <R version> <output root directory> [<--clean>|<--very-clean>]"
+echo "args: <R version> <output root directory> [<--clean=no/yes>] [<--very-clean=no/yes>] [<--local=no/yes>]"
 echo ""
 
 if [[ -z "$1" ]]; then
   echo "Please pass first argument as an R version to test against, e.g. 3.4.2"
   exit 1
 fi
+R_VER=$1
+shift
 
-if [[ -z "$2" ]] || [[ ! -d "$2" ]]; then
+if [[ -z "$1" ]] || [[ ! -d "$1" ]]; then
   echo "Please pass as second argument an (existing) output directory"
   exit 2
 fi
+OUTDIR=$1
+shift
 
-ROOT_LOC=/tmp/mc3-rjd
+while [ "$#" -gt 0 ]; do
+    OPT="$1"
+    case "$1" in
+        --enable-*)
+            VAR=$(echo $1 | sed "s,^--enable-\(.*\),\1,")
+            VAL=yes
+            ;;
+        --disable-*)
+            VAR=$(echo $1 | sed "s,^--disable-\(.*\),\1,")
+            VAL=no
+            ;;
+        --*=*)
+            VAR=$(echo $1 | sed "s,^--\(.*\)=.*,\1,")
+            VAL=$(echo $1 | sed "s,^--.*=\(.*\),\1,")
+            ;;
+        *)
+            echo "Unrecognised option '$1'"
+            exit 1
+            ;;
+    esac
+    VAR=$(echo "$VAR" | tr '[a-z]-' '[A-Z]_')
+    case "$VAR" in
+        sources)
+            if [ "$VAL" = "local" -o "$VAL" = "remote" ]; then
+                eval "$VAR=\$VAL"
+            else
+                echo "$VAL can only be 'local' or 'remote'"
+                exit 1
+            fi
+            ;;
+        *)
+            eval "$VAR=\$VAL"
+            ;;
+    esac
+    shift
+    OPTIONS_DEBUG=$OPTIONS_DEBUG" $VAR=$VAL"
+done
 
 if [[ $(uname) == Darwin ]]; then
   COMPILER=clangxx_osx-64
@@ -36,30 +80,47 @@ fi
 echo "Please wait ..."
 echo ""
 
-ENAME=r$1
-
 if [[ -n "${CONDA_PREFIX}" ]]; then
-  . deactivate > /dev/null 2>&1
-fi
-
-if [[ $3 == --very-clean ]]; then
-  if [[ -d ${ROOT_LOC} ]]; then
-    rm -rf ${ROOT_LOC}
+  if [[ ${LOCAL} == yes ]]; then
+    if [[ ${CONDA_DEFAULT_ENV} != root ]] && [[ ${CONDA_DEFAULT_ENV} != base ]]; then
+      echo "To use --local=yes you must be in an activated base environment (${CONDA_DEFAULT_ENV} env activated)"
+      exit 4
+    fi
+  else
+    . deactivate > /dev/null 2>&1
+  fi
+else
+  if [[ ${LOCAL} == yes ]]; then
+    echo "To use --local=yes you must be in an activated base environment (no env activated)"
+    exit 5
   fi
 fi
+ENAME=r${R_VER}
 
-if [[ ! -d ${ROOT_LOC} ]]; then
-  [[ -d $(dirname ${ROOT_LOC}) ]] || mkdir -p $(dirname ${ROOT_LOC})
-  pushd $(dirname ${ROOT_LOC})
-  curl -SLO --insecure https://repo.continuum.io/miniconda/Miniconda3-latest-${MC}-x86_64.sh
-  bash Miniconda3-latest-${MC}-x86_64.sh -bfp ${ROOT_LOC} > /dev/null 2>&1
+if [[ ${LOCAL} == no ]]; then
+  ROOT_LOC=/tmp/mc3-rjd
+  if [[ ${VERY_CLEAN} == yes ]]; then
+    if [[ -d ${ROOT_LOC} ]]; then
+      rm -rf ${ROOT_LOC}
+    fi
+  fi
+  if [[ ! -d ${ROOT_LOC} ]]; then
+    [[ -d $(dirname ${ROOT_LOC}) ]] || mkdir -p $(dirname ${ROOT_LOC})
+    pushd $(dirname ${ROOT_LOC})
+    curl -SLO --insecure https://repo.continuum.io/miniconda/Miniconda3-latest-${MC}-x86_64.sh
+    bash Miniconda3-latest-${MC}-x86_64.sh -bfp ${ROOT_LOC} > /dev/null 2>&1
+  fi
+  CHANNELS_ARGS="--override-channels -c http://repo.continuum.io/pkgs/main -c http://repo.continuum.io/pkgs/r"
+else
+  ROOT_LOC=${CONDA_PREFIX}
+  CHANNELS_ARGS="--override-channels -c http://repo.continuum.io/pkgs/main -c local -c rdonnellyr"
 fi
 
-if [[ $3 == --clean ]]; then
+if [[ ${CLEAN} == yes ]]; then
   [[ -d ${ROOT_LOC}/envs/${ENAME} ]] && rm -rf ${ROOT_LOC}/envs/${ENAME}
 fi
 if [[ ! -d ${ROOT_LOC}/envs/${ENAME} ]]; then
-  ${ROOT_LOC}/bin/conda create -y -n ${ENAME} r-base=$1 r-rjava ${COMPILER}
+  ${ROOT_LOC}/bin/conda create -y -n ${ENAME} ${CHANNELS_ARGS} r-base=${R_VER} r-rjava ${COMPILER}
 fi
 . ${ROOT_LOC}/bin/activate ${ENAME} > /dev/null 2>&1
 
@@ -81,10 +142,10 @@ else
 fi
 
 if [[ ${OK_JAVARECONF} == yes ]] && [[ ${OK_RJAVA} == yes ]]; then
-  DEST="$2"/$1/working/${DIR}
+  DEST="${OUTDIR}"/${R_VER}/working/${DIR}
   echo "Success, writing logs and system/java information to ${DEST}"
 else
-  DEST="$2"/$1/broken/${DIR}
+  DEST="${OUTDIR}"/${R_VER}/broken/${DIR}
   echo "Failue, writing logs and system/java information to ${DEST}"
 fi
 [[ -d ${DEST} ]] || mkdir -p ${DEST}
