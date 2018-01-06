@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+echo ""
+echo "rJava test and debug script"
+echo "args: <R version> <output root directory> [<--clean>|<--very-clean>]"
+echo ""
+
+if [[ -z "$1" ]]; then
+  echo "Please pass first argument as an R version to test against, e.g. 3.4.2"
+  exit 1
+fi
+
+if [[ -z "$2" ]] || [[ ! -d "$2" ]]; then
+  echo "Please pass as second argument an (existing) output directory"
+  exit 2
+fi
+
+ROOT_LOC=/tmp/mc3-rjd
+
+if [[ $(uname) == Darwin ]]; then
+  COMPILER=clangxx_osx-64
+  DIR=$(hostname)
+  EREGEX=-e
+  MC=MacOSX
+elif [[ $(uname) == Linux ]]; then
+  COMPILER=gxx_linux-64
+  DIR=$(hostname)
+  MC=Linux
+else
+  echo "Windows not supported yet"
+  exit 3
+fi
+
+echo "Please wait ..."
+echo ""
+
+ENAME=r$1
+
+if [[ -n "${CONDA_PREFIX}" ]]; then
+  . deactivate > /dev/null 2>&1
+fi
+
+if [[ $3 == --very-clean ]]; then
+  if [[ -d ${ROOT_LOC} ]]; then
+    rm -rf ${ROOT_LOC}
+  fi
+fi
+
+if [[ ! -d ${ROOT_LOC} ]]; then
+  [[ -d $(dirname ${ROOT_LOC}) ]] || mkdir -p $(dirname ${ROOT_LOC})
+  pushd $(dirname ${ROOT_LOC})
+  curl -SLO --insecure https://repo.continuum.io/miniconda/Miniconda3-latest-${MC}-x86_64.sh
+  bash Miniconda3-latest-${MC}-x86_64.sh -bfp ${ROOT_LOC} > /dev/null 2>&1
+fi
+
+if [[ $3 == --clean ]]; then
+  [[ -d ${ROOT_LOC}/envs/${ENAME} ]] && rm -rf ${ROOT_LOC}/envs/${ENAME}
+fi
+if [[ ! -d ${ROOT_LOC}/envs/${ENAME} ]]; then
+  ${ROOT_LOC}/bin/conda create -y -n ${ENAME} r-base=$1 r-rjava ${COMPILER}
+fi
+. ${ROOT_LOC}/bin/activate ${ENAME} > /dev/null 2>&1
+
+if ! grep 'set -x' ${CONDA_PREFIX}/lib/R/bin/javareconf > /dev/null; then
+  sed -i'' ${EREGEX} '1i\'$'\n''set -x\'$'\n' ${CONDA_PREFIX}/lib/R/bin/javareconf
+fi
+
+R CMD javareconf > /tmp/R-CMD-javareconf.log 2>&1
+if [[ $? == 0 ]]; then
+  OK_JAVARECONF=yes
+else
+  OK_JAVARECONF=no
+fi
+R --silent -e 'library(rJava); .jinit()' > /tmp/rJava-_jinit.log 2>&1
+if [[ $? == 0 ]]; then
+  OK_RJAVA=yes
+else
+  OK_RJAVA=no
+fi
+
+if [[ ${OK_JAVARECONF} == yes ]] && [[ ${OK_RJAVA} == yes ]]; then
+  DEST="$2"/$1/working/${DIR}
+  echo "Success, writing logs and system/java information to ${DEST}"
+else
+  DEST="$2"/$1/broken/${DIR}
+  echo "Failue, writing logs and system/java information to ${DEST}"
+fi
+
+[[ -d ${DEST} ]] || mkdir -p ${DEST}
+
+cp /tmp/R-CMD-javareconf.log ${DEST}/
+cp /tmp/rJava-_jinit.log ${DEST}/
+
+pkgutil --pkgs | grep 'Java\|JDK\|JRE' > ${DEST}/pkgutil---pkgs.log
+
+IFS=$'\n' read -d '' -r -a JAVA_PKGS < ${DEST}/pkgutil---pkgs.log
+for JAVA_PKG in ${JAVA_PKGS[@]}; do
+  pkgutil --info ${JAVA_PKG} > ${DEST}/pkgutil-${JAVA_PKG}.log
+  pkgutil --files ${JAVA_PKG} >> ${DEST}/pkgutil-${JAVA_PKG}.log
+done
+
+export DYLD_PRINT_LIBRARIES=1
+R --silent -e 'library(rJava); .jinit()' > ${DEST}/rJava-_jinit-dylibs.log 2>&1
