@@ -89,6 +89,12 @@ else
 fi
 [[ -d ${DEST} ]] || mkdir -p ${DEST}
 
+if [[ ${OK_JAVARECONF} == yes ]]; then
+  echo working > ${DEST}/R-CMD-javareconf-status.log
+else
+  echo broken > ${DEST}/R-CMD-javareconf-status.log
+fi
+
 # WIP WIP WIP (remove this)
 # Test against the new WIP javareconf in the folder of this script
 if [[ -f ${THIS_DIR}/javareconf.3.4.3.WIP ]]; then
