@@ -1,0 +1,309 @@
+++ test -z /tmp/mc3-rjd/envs/r3.4.2/lib/R
+++ . /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/javaconf
++++ :
++++ : '~autodetect~'
++++ : '~autodetect~'
++++ : '~autodetect~'
++++ /tmp/mc3-rjd/envs/r3.4.2/lib/R/bin/R CMD config DYLIB_EXT
+++ DYLIB_EXT=.dylib
+++ tools_classpath=/tmp/mc3-rjd/envs/r3.4.2/lib/R/share/java
+++ revision='$Rev: 73535 $'
++++ set - '$Rev:' 73535 '$'
+++ version=73535
+++ version='R Java configurator: 3.4.2 (r73535)
+
+Copyright (C) 2002-2015 The R Core Team.
+This is free software; see the GNU General Public License version 2
+or later for copying conditions.  There is NO warranty.'
+++ usage='
+Usage: R CMD javareconf [options]
+
+Detect current Java setup and update the corresponding configuration in R.
+
+Options:
+  -h, --help     print this help message and exit
+  -v, --version  print version info and exit
+  -n, --dry-run  perform Java detection, but don'\''t touch any
+                 configuration files
+  -e <prog>      same as -n but exports all detected variables
+                 and runs <prog>. If -e is the last argument
+                 or <prog> is '\'''\'' then a shell is used instead
+  xxx=yyy        evaluate the corresponding expression
+                 (e.g. JAVA_HOME=/usr/lib/java)
+
+Environment variables that can be used to influence the detection:
+  JAVA           path to a Java interpreter executable
+                 By default first '\''java'\'' command found on the PATH
+                 is taken (unless JAVA_HOME is also specified).
+  JAVA_HOME      home of the Java environment. If not specified,
+                 it will be detected automatically from the Java
+                 interpreter.
+  JAVAC          path to a Java compiler
+  JAVAH          path to a Java header/stub generator
+  JAR            path to a Java archive tool
+
+The following variables should be used with extreme caution. They
+must all match, so use only if you have a very special setup that
+javareconf cannot detect automatically:
+  JAVA_LD_LIBRARY_PATH library path necessary at run-time
+  JAVA_CPPFLAGS  C preprocessor flags necessary to compile JNI programs
+  JAVA_LIBS      libraries (as linker flags) necessary to compile
+                 JNI programs
+
+Report bugs at <https://bugs.R-project.org>.'
+++ dry_run=no
+++ export_vars=no
+++ test -n ''
+++ test -z ''
+++ JAVA_PATH=/tmp/mc3-rjd/envs/r3.4.2/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+++ JAVA_PATH=/tmp/mc3-rjd/envs/r3.4.2/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/java/bin:/usr/jdk/bin:/usr/lib/java/bin:/usr/lib/jdk/bin:/usr/local/java/bin:/usr/local/jdk/bin:/usr/local/lib/java/bin:/usr/local/lib/jdk/bin
+++ test -z ''
+++ save_IFS=' 	
+'
+++ IFS=:
+++ for dir in '${JAVA_PATH}'
+++ test -f /tmp/mc3-rjd/envs/r3.4.2/bin/java
+++ for dir in '${JAVA_PATH}'
+++ test -f /Library/Frameworks/Python.framework/Versions/3.6/bin/java
+++ for dir in '${JAVA_PATH}'
+++ test -f /usr/local/bin/java
+++ for dir in '${JAVA_PATH}'
+++ test -f /usr/bin/java
+++ JAVA=/usr/bin/java
+++ break
+++ IFS=' 	
+'
+++ test -z /usr/bin/java
+++ test -L /usr/bin/java
++++ readlink /usr/bin/java
+++ JAVA=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
++++ dirname /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
+++ JAVA_PATH=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands
+++ echo 'Java interpreter : /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java'
+Java interpreter : /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
++++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java -classpath /tmp/mc3-rjd/envs/r3.4.2/lib/R/share/java getsp -test
+++ jires=Test1234OK
+++ test Test1234OK '!=' Test1234OK
+++ test -z ''
++++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java -classpath /tmp/mc3-rjd/envs/r3.4.2/lib/R/share/java getsp java.home
+++ JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+++ test -z /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
++++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java -classpath /tmp/mc3-rjd/envs/r3.4.2/lib/R/share/java getsp java.version
+++ echo 'Java version     : 9.0.1'
+Java version     : 9.0.1
+++ echo 'Java home path   : /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home'
+Java home path   : /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+++ test -z ''
+++ save_IFS=' 	
+'
+++ IFS=:
+++ for dir in '${JAVA_PATH}'
+++ test -f /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
+++ JAVAC=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
+++ break
+++ IFS=' 	
+'
+++ : /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T/
+++ tempdir=/var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf
+++ test -n /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf
+++ test -d /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf
+++ javac_works='not present'
+++ test -n /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
+++ javac_works='not functional'
+++ echo 'public class A { }'
+++ test -f /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf/A.java
+++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf/A.java
+++ test -f /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf/A.class
+++ javac_works=yes
+++ test yes = yes
+++ echo 'Java compiler    : /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac'
+Java compiler    : /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
+++ test -z ''
+++ save_IFS=' 	
+'
+++ IFS=:
+++ for dir in '${JAVA_PATH}'
+++ test -f /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah
+++ JAVAH=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah
+++ break
+++ IFS=' 	
+'
+++ echo 'Java headers gen.: /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah'
+Java headers gen.: /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah
+++ test -z ''
+++ save_IFS=' 	
+'
+++ IFS=:
+++ for dir in '${JAVA_PATH}'
+++ test -f /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar
+++ JAR=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar
+++ break
+++ IFS=' 	
+'
+++ echo 'Java archive tool: /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar'
+Java archive tool: /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar
+++ : '~autodetect~'
+++ : '~autodetect~'
+++ : '~autodetect~'
+++ custom_JAVA_LIBS='~autodetect~'
+++ custom_JAVA_CPPFLAGS='~autodetect~'
+++ custom_JAVA_LD_LIBRARY_PATH='~autodetect~'
++++ uname
+++ hostos=Darwin
+++ test Darwin = Darwin
++++ echo /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
++++ grep '^/System/Library'
+++ pref=
+++ test '' = /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+++ echo 'Non-system Java on macOS'
+Non-system Java on macOS
+++ test '~autodetect~' = '~autodetect~'
+++ save_LDLP=
+++ LD_LIBRARY_PATH=
+++ export LD_LIBRARY_PATH
++++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java -classpath /tmp/mc3-rjd/envs/r3.4.2/lib/R/share/java getsp java.library.path
++++ /usr/bin/sed -e 's/:$//' -e 's/^://'
+++ java_library_path=/Users/rdonnelly/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+++ has_libjvm=no
+++ save_IFS=' 	
+'
+++ IFS=:
+++ for dir in '${java_library_path}'
+++ test -f /Users/rdonnelly/Library/Java/Extensions/libjvm.dylib
+++ for dir in '${java_library_path}'
+++ test -f /Library/Java/Extensions/libjvm.dylib
+++ for dir in '${java_library_path}'
+++ test -f /Network/Library/Java/Extensions/libjvm.dylib
+++ for dir in '${java_library_path}'
+++ test -f /System/Library/Java/Extensions/libjvm.dylib
+++ for dir in '${java_library_path}'
+++ test -f /usr/lib/java/libjvm.dylib
+++ for dir in '${java_library_path}'
+++ test -f ./libjvm.dylib
+++ test no = no
++++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java -classpath /tmp/mc3-rjd/envs/r3.4.2/lib/R/share/java getsp sun.boot.library.path
++++ /usr/bin/sed -e 's/:$//' -e 's/^://'
+++ boot_path=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib
+++ test -n /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib
+++ for dir in '"${boot_path}"' '"${boot_path}/client"' '"${boot_path}/server"'
+++ test -f /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/libjvm.dylib
+++ for dir in '"${boot_path}"' '"${boot_path}/client"' '"${boot_path}/server"'
+++ test -f /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/client/libjvm.dylib
+++ for dir in '"${boot_path}"' '"${boot_path}/client"' '"${boot_path}/server"'
+++ test -f /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+++ has_libjvm=yes
+++ java_library_path=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/server
+++ break
+++ IFS=' 	
+'
+++ test false '!=' false
+++ java_home=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
++++ echo /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/server
++++ /usr/bin/sed '-e s:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home:$\(JAVA_HOME\):g'
+++ JAVA_LD_LIBRARY_PATH='$(JAVA_HOME)/lib/server'
+++ LD_LIBRARY_PATH=
+++ export LD_LIBRARY_PATH
++++ echo '$(JAVA_HOME)/lib/server'
++++ /usr/bin/sed -e 's|:| -L|g'
+++ JAVA_LIBS='$(JAVA_HOME)/lib/server'
+++ test -n '$(JAVA_HOME)/lib/server'
+++ JAVA_LIBS='-L$(JAVA_HOME)/lib/server'
+++ JAVA_LIBS='-L$(JAVA_HOME)/lib/server -ljvm'
++++ echo '$(JAVA_HOME)/lib/server'
++++ /usr/bin/sed -e 's:$(JAVA_HOME):$\{JAVA_HOME\}:g'
+++ JAVA_LD_LIBRARY_PATH_SH='${JAVA_HOME}/lib/server'
+++ jinc=
+++ JAVA_CPPFLAGS=
+++ for pinc in include ../include jre/include
+++ test -f /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/jni.h
+++ jinc=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include
+++ break
+++ test -z /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include
+++ test -n /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include
+++ JAVA_CPPFLAGS=-I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include
+++ jmdinc=
+++ jmdirs=
++++ echo 'cat(R.version$os)'
++++ /tmp/mc3-rjd/envs/r3.4.2/lib/R/bin/R --vanilla --slave
+++ host_os=darwin13.4.0
+++ case "${host_os}" in
+++ jmdirs=darwin
+++ test -z darwin
+++ jmdirs='. darwin genunix ppc x86 iris hp-ux aix win32 cygwin openbsd'
+++ for pimd in '${jmdirs}'
+++ test -f /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/./jni_md.h
+++ for pimd in '${jmdirs}'
+++ test -f /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin/jni_md.h
+++ jmdinc=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin
+++ break
+++ test -z /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin
+++ test -n /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin
+++ test /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin '!=' /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/.
+++ JAVA_CPPFLAGS='-I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin'
++++ echo -I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin
++++ /usr/bin/sed -e 's:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home:$(JAVA_HOME):g'
+++ JAVA_CPPFLAGS='-I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/darwin'
+++ test -n ''
+++ acx_custom_java_libs=no
+++ test '~autodetect~' '!=' '~autodetect~'
+++ test '~autodetect~' '!=' '~autodetect~'
+++ test '~autodetect~' '!=' '~autodetect~'
+++ wd=/Users/rdonnelly/conda/aggregateR/r-rjava-feedstock/recipe
+++ cd /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf
+++ echo
+
+++ echo 'trying to compile and link a JNI program '
+trying to compile and link a JNI program 
+++ echo 'detected JNI cpp flags    : -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/darwin'
+detected JNI cpp flags    : -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/darwin
+++ echo 'detected JNI linker flags : -L$(JAVA_HOME)/lib/server -ljvm'
+detected JNI linker flags : -L$(JAVA_HOME)/lib/server -ljvm
+++ cat
++++ echo '-I$(JAVA_HOME)/include' '-I$(JAVA_HOME)/include/darwin'
++++ /usr/bin/sed -e 's:$(JAVA_HOME):/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home:g'
+++ JAVA_CPPFLAGS1='-I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin'
++++ echo '-L$(JAVA_HOME)/lib/server' -ljvm
++++ /usr/bin/sed -e 's:$(JAVA_HOME):/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home:g'
+++ JAVA_LIBS1='-L/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/server -ljvm'
+++ cat
+++ MAKEFLAGS=
+++ export MAKEFLAGS
+++ /tmp/mc3-rjd/envs/r3.4.2/lib/R/bin/R CMD SHLIB conftest.c
+x86_64-apple-darwin13.4.0-clang -I/tmp/mc3-rjd/envs/r3.4.2/lib/R/include -DNDEBUG -I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/include/darwin  -D_FORTIFY_SOURCE=2 -mmacosx-version-min=10.9 -I/tmp/mc3-rjd/envs/r3.4.2/include   -fPIC  -march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -I/tmp/mc3-rjd/envs/r3.4.2/include  -c conftest.c -o conftest.o
+x86_64-apple-darwin13.4.0-clang -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/tmp/mc3-rjd/envs/r3.4.2/lib/R/lib -Wl,-pie -Wl,-headerpad_max_install_names -o conftest.so conftest.o -L/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/server -ljvm -L/tmp/mc3-rjd/envs/r3.4.2/lib/R/lib -lR -L/tmp/mc3-rjd/envs/r3.4.2/lib -lintl -lc -Wl,-framework -Wl,CoreFoundation
+ld: warning: -pie being ignored. It is only used when linking a main executable
+++ ac_status=0
+++ test 0 '!=' 0
+++ rm -f conftest.c conftest.o conftest.so Makevars
+++ cd /Users/rdonnelly/conda/aggregateR/r-rjava-feedstock/recipe
+++ rm -rf /var/folders/sn/44hk_kjx1px9d73t7yyj3g000000gn/T//Rjavareconf.eVTelf
+++ echo ''
+
+++ test no = yes
+++ echo ''
+
+++ echo 'JAVA_HOME        : /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home'
+JAVA_HOME        : /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+++ echo 'Java library path: $(JAVA_HOME)/lib/server'
+Java library path: $(JAVA_HOME)/lib/server
+++ echo 'JNI cpp flags    : -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/darwin'
+JNI cpp flags    : -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/darwin
+++ echo 'JNI linker flags : -L$(JAVA_HOME)/lib/server -ljvm'
+JNI linker flags : -L$(JAVA_HOME)/lib/server -ljvm
+++ test no = yes
+++ echo 'Updating Java configuration in /tmp/mc3-rjd/envs/r3.4.2/lib/R'
+Updating Java configuration in /tmp/mc3-rjd/envs/r3.4.2/lib/R
+++ test -n ''
+++ files='/tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/Makeconf /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/ldpaths'
+++ for file in '$files'
+++ /usr/bin/sed -e 's|JAVA =.\{0,\}|JAVA = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java|' -e 's|JAVA_HOME =.\{0,\}|JAVA_HOME = /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home|' -e 's|: ${JAVA_HOME=.\{1,\}|: ${JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home}|' -e 's|: ${R_JAVA_LD_LIBRARY_PATH=.\{1,\}|: ${R_JAVA_LD_LIBRARY_PATH=${JAVA_HOME}/lib/server}|' -e 's|JAVA_LIBS =.\{0,\}|JAVA_LIBS = -L$(JAVA_HOME)/lib/server -ljvm|g' -e 's|JAVA_LD_LIBRARY_PATH =.\{0,\}|JAVA_LD_LIBRARY_PATH = $(JAVA_HOME)/lib/server|' -e 's|JAVAC =.\{0,\}|JAVAC = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac|' -e 's|JAVAH =.\{0,\}|JAVAH = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah|' -e 's|JAR =.\{0,\}|JAR = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar|' -e 's|JAVA_CPPFLAGS =.\{0,\}|JAVA_CPPFLAGS = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/darwin|g' /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/Makeconf
+++ test -f /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/Makeconf.new
+++ mv /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/Makeconf.new /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/Makeconf
+++ for file in '$files'
+++ /usr/bin/sed -e 's|JAVA =.\{0,\}|JAVA = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java|' -e 's|JAVA_HOME =.\{0,\}|JAVA_HOME = /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home|' -e 's|: ${JAVA_HOME=.\{1,\}|: ${JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home}|' -e 's|: ${R_JAVA_LD_LIBRARY_PATH=.\{1,\}|: ${R_JAVA_LD_LIBRARY_PATH=${JAVA_HOME}/lib/server}|' -e 's|JAVA_LIBS =.\{0,\}|JAVA_LIBS = -L$(JAVA_HOME)/lib/server -ljvm|g' -e 's|JAVA_LD_LIBRARY_PATH =.\{0,\}|JAVA_LD_LIBRARY_PATH = $(JAVA_HOME)/lib/server|' -e 's|JAVAC =.\{0,\}|JAVAC = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac|' -e 's|JAVAH =.\{0,\}|JAVAH = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah|' -e 's|JAR =.\{0,\}|JAR = /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar|' -e 's|JAVA_CPPFLAGS =.\{0,\}|JAVA_CPPFLAGS = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/darwin|g' /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/ldpaths
+++ test -f /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/ldpaths.new
+++ mv /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/ldpaths.new /tmp/mc3-rjd/envs/r3.4.2/lib/R/etc/ldpaths
+++ echo Done.
+Done.
+++ echo ''
+
