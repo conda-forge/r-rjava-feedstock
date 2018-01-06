@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 echo ""
 echo "rJava test and debug script"
 echo "args: <R version> <output root directory> [<--clean>|<--very-clean>]"
@@ -86,12 +88,28 @@ else
   echo "Failue, writing logs and system/java information to ${DEST}"
 fi
 
+# WIP WIP WIP (remove this)
+# Test against the new WIP javareconf in the folder of this script
+if [[ -f ${THIS_DIR}/javareconf.3.4.3.WIP ]]; then
+  mv ${CONDA_PREFIX}/lib/R/bin/javareconf ${CONDA_PREFIX}/lib/R/bin/javareconf.orig
+  cp ${THIS_DIR}/javareconf.3.4.3.WIP ${CONDA_PREFIX}/lib/R/bin/javareconf
+  R CMD javareconf > ${DEST}/R-CMD-javareconf-WIP.log 2>&1
+  if [[ $? == 0 ]]; then
+    echo working > ${DEST}/R-CMD-javareconf-WIP-status.log
+  else
+    echo broken > ${DEST}/R-CMD-javareconf-WIP-status.log
+  fi
+  rm ${CONDA_PREFIX}/lib/R/bin/javareconf
+  mv ${CONDA_PREFIX}/lib/R/bin/javareconf.orig ${CONDA_PREFIX}/lib/R/bin/javareconf
+fi
+# END WIP END WIP END WIP
+
 [[ -d ${DEST} ]] || mkdir -p ${DEST}
 
 cp /tmp/R-CMD-javareconf.log ${DEST}/
 cp /tmp/rJava-_jinit.log ${DEST}/
 
-pkgutil --pkgs | grep 'Java\|JDK\|JRE' > ${DEST}/pkgutil---pkgs.log
+pkgutil --pkgs | grep 'Java\|JDK\|JRE\|jdk\|jre' > ${DEST}/pkgutil---pkgs.log
 
 IFS=$'\n' read -d '' -r -a JAVA_PKGS < ${DEST}/pkgutil---pkgs.log
 for JAVA_PKG in ${JAVA_PKGS[@]}; do
