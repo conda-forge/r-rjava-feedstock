@@ -101,16 +101,16 @@ Java home path   : /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
 ++ IFS=' 	
 '
 ++ : /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T/
-++ tempdir=/var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L
-++ test -n /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L
-++ test -d /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L
+++ tempdir=/var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY
+++ test -n /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY
+++ test -d /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY
 ++ javac_works='not present'
 ++ test -n /usr/bin/javac
 ++ javac_works='not functional'
 ++ echo 'public class A { }'
-++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L/A.java
-++ /usr/bin/javac /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L/A.java
-++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L/A.class
+++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY/A.java
+++ /usr/bin/javac /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY/A.java
+++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY/A.class
 ++ javac_works=yes
 ++ test yes = yes
 ++ echo 'Java compiler    : /usr/bin/javac'
@@ -173,7 +173,7 @@ System Java on macOS
 ++ test '~autodetect~' '!=' '~autodetect~'
 ++ test '~autodetect~' '!=' '~autodetect~'
 ++ wd=/Users/rdonnelly/conda/aggregateR/r-rjava-feedstock/recipe
-++ cd /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L
+++ cd /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY
 ++ echo
 
 ++ echo 'trying to compile and link a JNI program '
@@ -207,7 +207,7 @@ ld: warning: -pie being ignored. It is only used when linking a main executable
 ++ test 0 '!=' 0
 ++ rm -f conftest.c conftest.o conftest.so Makevars
 ++ cd /Users/rdonnelly/conda/aggregateR/r-rjava-feedstock/recipe
-++ rm -rf /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.kkdI6L
+++ rm -rf /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.BppoIY
 ++ echo ''
 
 ++ test no = yes

@@ -102,16 +102,16 @@ Java home path   : /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
 ++ IFS=' 	
 '
 ++ : /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T/
-++ tempdir=/var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U
-++ test -n /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U
-++ test -d /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U
+++ tempdir=/var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc
+++ test -n /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc
+++ test -d /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc
 ++ javac_works='not present'
 ++ test -n /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
 ++ javac_works='not functional'
 ++ echo 'public class A { }'
-++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U/A.java
-++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U/A.java
-++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U/A.class
+++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc/A.java
+++ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc/A.java
+++ test -f /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc/A.class
 ++ javac_works=yes
 ++ test yes = yes
 ++ echo 'Java compiler    : /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac'
@@ -247,7 +247,7 @@ Non-system Java on macOS
 ++ test '~autodetect~' '!=' '~autodetect~'
 ++ test '~autodetect~' '!=' '~autodetect~'
 ++ wd=/Users/rdonnelly/conda/aggregateR/r-rjava-feedstock/recipe
-++ cd /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U
+++ cd /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc
 ++ echo
 
 ++ echo 'trying to compile and link a JNI program '
@@ -282,7 +282,7 @@ ld: warning: ignoring file /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/
 ++ test 0 '!=' 0
 ++ rm -f conftest.c conftest.o conftest.so Makevars
 ++ cd /Users/rdonnelly/conda/aggregateR/r-rjava-feedstock/recipe
-++ rm -rf /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.oI067U
+++ rm -rf /var/folders/d8/cwp3j_1s7blfgw0b8mpd13tm0000gp/T//Rjavareconf.VqECqc
 ++ echo ''
 
 ++ test no = yes
