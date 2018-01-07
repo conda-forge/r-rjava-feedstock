@@ -1,7 +1,0 @@
-> library(rJava); .jinit()
-JavaVM: requested Java version ((null)) not available. Using Java at "" instead.
-JavaVM: Failed to load JVM: /bundle/Libraries/libserver.dylib
-JavaVM FATAL: Failed to load the jvm library.
-Error in .jinit() : JNI_GetCreatedJavaVMs returned -1
-Calls: .jinit -> .External
-Execution halted
