@@ -13,6 +13,8 @@ source:
     - https://cran.r-project.org/src/contrib/rJava_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
   sha256: dada5e031414da54eb80b9024d51866c20b92d41d68da65789fe0130bc54bd8a
+  patches:
+    - 0001-Improve-lib-jvm.-so-dylib-dll-loading.patch
 
 build:
   number: 0
@@ -35,8 +37,8 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('rJava')"  # [not win]
-    - "\"%R%\" -e \"library('rJava')\""  # [win]
+    - $R -e "library('rJava'); .jpackage('test'); .jcall(.jnew('java.lang.System'),'J','nanoTime')"  # [not win]
+    - "\"%R%\" -e \"library('rJava'); .jpackage('test'); .jcall(.jnew('java.lang.System'),'J','nanoTime')\""  # [win]
 
 about:
   home: http://www.rforge.net/rJava/
