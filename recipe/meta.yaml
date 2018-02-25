@@ -31,6 +31,8 @@ build:
     - lib/
   script_env:
     - JAVA_HOME
+  missing_dso_whitelist:  # [osx]
+    - /System/Library/Frameworks/JavaVM.framework  # [osx]
 
 requirements:
   build:
