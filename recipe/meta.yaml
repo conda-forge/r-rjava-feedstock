@@ -14,7 +14,6 @@ source:
     - {{ cran_mirror }}/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
   sha256: 932b153f2b5c546d614bb5ac4124df3d103c9f8e09a608a14fd036dfe15e9146
 
-
   patches:
     - 0001-Improve-lib-jvm.-so-dylib-dll-loading.patch
 
@@ -23,7 +22,6 @@ build:
   no_error_overlinking: True  # [linux32]
   # If this is a new build for the same version, increment the build number.
   number: 0
-
 
   # This is required to make R link correctly on Linux.
   rpaths:
