@@ -31,6 +31,7 @@ build:
     - JAVA_HOME
   missing_dso_whitelist:  # [osx]
     - /System/Library/Frameworks/JavaVM.framework  # [osx]
+    - /System/Library/Frameworks/JavaVM.framework/Versions/A/JavaVM  # [osx]
 
 requirements:
   build:
