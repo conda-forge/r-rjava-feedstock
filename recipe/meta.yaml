@@ -15,7 +15,8 @@ source:
   sha256: dada5e031414da54eb80b9024d51866c20b92d41d68da65789fe0130bc54bd8a
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win]
   rpaths:
     - lib/R/lib/
@@ -23,10 +24,11 @@ build:
 
 requirements:
   build:
-    - r-base
     - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
+    - r-base
     - openjdk
 
   run:
