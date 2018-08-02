@@ -32,7 +32,7 @@ source run_conda_forge_build_setup
 # "recipe/yum_requirements.txt" file. After updating that file,
 # run "conda smithy rerender" and this line will be updated
 # automatically.
-/usr/bin/sudo -n yum install -y java-1.7.0-openjdk
+/usr/bin/sudo -n yum install -y java-1.7.0-openjdk java-1.7.0-openjdk-devel
 
 
 conda build /home/conda/recipe_root -m /home/conda/feedstock_root/.ci_support/${CONFIG}.yaml --quiet
