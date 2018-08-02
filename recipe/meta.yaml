@@ -25,10 +25,11 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}  # [not win]
+  host:
     - r-base
     - posix                # [win]
     - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
     - openjdk
 
   run:
