@@ -34,6 +34,8 @@ requirements:
   build:
     - {{ compiler('c') }}        # [not win]
     - {{native}}toolchain        # [win]
+    - {{ cdt('java-1.7.0-openjdk') }}        # [linux]
+    - {{ cdt('java-1.7.0-openjdk-devel') }}  # [linux]
     - {{posix}}filesystem        # [win]
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
@@ -55,7 +57,7 @@ requirements:
 
 test:
   requires:
-    - openjdk                    # [win]
+    - openjdk                    # [win or linux]
   commands:
     # You can put additional test commands to be run here.
     - $R -e "library('rJava')"           # [not win]
