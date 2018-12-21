@@ -34,8 +34,8 @@ requirements:
   build:
     - {{ compiler('c') }}        # [not win]
     - {{native}}toolchain        # [win]
-    - {{ cdt('java-1.7.0-openjdk') }}        # [linux]
-    - {{ cdt('java-1.7.0-openjdk-devel') }}  # [linux]
+    - {{ cdt('java-1.8.0-openjdk') }}        # [linux]
+    - {{ cdt('java-1.8.0-openjdk-devel') }}  # [linux]
     - {{posix}}filesystem        # [win]
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
