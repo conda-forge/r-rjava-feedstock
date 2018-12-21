@@ -6,8 +6,10 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      linux_:
-        CONFIG: linux_
+      linux_c_compilergcctarget_platformlinux-64:
+        CONFIG: linux_c_compilergcctarget_platformlinux-64
+      linux_c_compilertoolchain_ctarget_platformlinux-64:
+        CONFIG: linux_c_compilertoolchain_ctarget_platformlinux-64
   steps:
   - script: |
       sudo pip install --upgrade pip
