@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Find Java in the compiler's sysroot
-if [[ ${HOST} =~ .*linux.* ]]; then
+if [[ $target_platform =~ .*linux.* ]]; then
   export JAVAC=$(find ${BUILD_PREFIX}/${HOST}/sysroot -path "*/bin/javac")
   export JAVAH=$(find ${BUILD_PREFIX}/${HOST}/sysroot -path "*/bin/javah")
   export JAVA=${JAVAC%?}
