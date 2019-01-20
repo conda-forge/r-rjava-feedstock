@@ -1,4 +1,4 @@
-{% set version = '0.9-8' %}
+{% set version = '0.9-10' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,15 +12,15 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rJava_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
-  sha256: dada5e031414da54eb80b9024d51866c20b92d41d68da65789fe0130bc54bd8a
+  sha256: c9934bdd3ae08746c4d4b9faa235af2c147a71235a9af108e58bff11c179fe78
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
-  skip: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
+    - jre/lib/amd64/server/
 
 requirements:
   build:
@@ -29,11 +29,11 @@ requirements:
     - {{ compiler('m2w64_c') }}  # [win]
   host:
     - r-base
-    - openjdk
+    - openjdk 8.*
 
   run:
     - r-base
-    - openjdk
+    - openjdk 8.*
 
 test:
   commands:
@@ -49,6 +49,5 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
+    - conda-forge/r
     - sodre
