@@ -26,15 +26,16 @@ requirements:
     - posix                # [win]
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
-    - openmp        # [unix]
+    - llvm-openmp        # [osx]
 
   host:
     - r-base
     - openjdk 8.*
-    - openmp
+    - llvm-openmp
   run:
     - r-base
     - openjdk 8.*
+    - llvm-openmp
   
 test:
   commands:
