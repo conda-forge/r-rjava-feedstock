@@ -26,6 +26,8 @@ requirements:
     - posix                # [win]
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{posix}}pkg-config
+
   host:
     - r-base
     - openjdk 8.*
