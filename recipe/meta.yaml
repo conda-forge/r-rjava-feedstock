@@ -26,17 +26,15 @@ requirements:
     - posix                # [win]
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
-    - llvm-openmp        # [osx]
 
   host:
     - r-base
     - openjdk 8.*
-    - llvm-openmp
+    
   run:
     - r-base
-    - openjdk 8.*
-    - llvm-openmp
-  
+    - openjdk 8.*  
+    
 test:
   commands:
     - $R -e "library('rJava')"  # [not win]
