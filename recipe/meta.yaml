@@ -32,11 +32,11 @@ requirements:
     - {{posix}}make
 
   host:
-    - r-base
+    - r-base 3.6.*
     - openjdk 8.*
     
   run:
-    - r-base
+    - r-base 3.6.*
     - openjdk 8.*  
     
 test:
