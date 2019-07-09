@@ -1,4 +1,4 @@
-{% set version = '0.9-10' %}
+{% set version = '0.9-11' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,7 +11,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rJava_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
-  sha256: c9934bdd3ae08746c4d4b9faa235af2c147a71235a9af108e58bff11c179fe78
+  sha256: c28ae131456a98f4d3498aa8f6eac9d4df48727008dacff1aa561fc883972c69
 
 build:
   merge_build_host: True  # [win]
@@ -26,16 +26,15 @@ requirements:
     - posix                # [win]
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
-    - {{posix}}pkg-config
 
   host:
     - r-base
     - openjdk 8.*
-
+    
   run:
     - r-base
-    - openjdk 8.*
-
+    - openjdk 8.*  
+    
 test:
   commands:
     - $R -e "library('rJava')"  # [not win]
