@@ -37,6 +37,7 @@ requirements:
     
 test:
   commands:
+    - R CMD javareconf  # [unix]
     - $R -e "library('rJava')"  # [not win]
     - "\"%R%\" -e \"library('rJava')\""  # [win]
 
