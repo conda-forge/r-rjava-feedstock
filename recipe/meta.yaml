@@ -32,7 +32,7 @@ requirements:
     - openjdk 8.*
   run:
     - r-base
-    - openjdk 8.*  
+    - openjdk 8.*
 test:
   commands:
     - $R -e "library('rJava')"  # [not win]
