@@ -30,7 +30,6 @@ requirements:
   host:
     - r-base
     - openjdk 8.*
-    
   run:
     - r-base
     - openjdk 8.*  
