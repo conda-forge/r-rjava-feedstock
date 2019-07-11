@@ -1,5 +1,4 @@
-{% set version = '0.9-10' %}
-
+{% set version = '0.9-11' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -9,9 +8,9 @@ package:
 
 source:
   url:
-    - https://cran.r-project.org/src/contrib/rJava_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
-  sha256: c9934bdd3ae08746c4d4b9faa235af2c147a71235a9af108e58bff11c179fe78
+    - {{ cran_mirror }}/src/contrib/rJava_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
+  sha256: c28ae131456a98f4d3498aa8f6eac9d4df48727008dacff1aa561fc883972c69
 
 build:
   merge_build_host: True  # [win]
@@ -23,20 +22,29 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - openjdk 8.*
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - openjdk 8.*
 
 test:
   commands:
-    - $R -e "library('rJava')"  # [not win]
+    - $R -e "library('rJava')"           # [not win]
     - "\"%R%\" -e \"library('rJava')\""  # [win]
 
 about:
@@ -45,8 +53,25 @@ about:
   summary: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation
     of objects, calling methods and accessing fields.
   license_family: GPL2
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
     - sodre
+
+# Package: rJava
+# Version: 0.9-11
+# Title: Low-Level R to Java Interface
+# Author: Simon Urbanek <simon.urbanek@r-project.org>
+# Maintainer: Simon Urbanek <simon.urbanek@r-project.org>
+# Depends: R (>= 2.5.0), methods
+# Description: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation of objects, calling methods and accessing fields.
+# License: GPL-2
+# URL: http://www.rforge.net/rJava/
+# SystemRequirements: Java JDK 1.2 or higher (for JRI/REngine JDK 1.4 or higher), GNU make
+# BugReports: https://github.com/s-u/rJava/issues
+# NeedsCompilation: yes
+# Packaged: 2019-03-27 20:56:52 UTC; svnuser
+# Repository: CRAN
+# Date/Publication: 2019-03-29 06:53:31 UTC
