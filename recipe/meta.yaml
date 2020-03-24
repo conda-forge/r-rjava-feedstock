@@ -1,4 +1,4 @@
-{% set version = '0.9-11' %}
+{% set version = "0.9-12" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rJava_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
-  sha256: c28ae131456a98f4d3498aa8f6eac9d4df48727008dacff1aa561fc883972c69
+  sha256: 2248a8c73cacfecf75445ad0ebda4960409ec3f21afb180a1bc02a6de4057b0f
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -50,10 +50,9 @@ test:
 about:
   home: http://www.rforge.net/rJava/
   license: GPL-2
-  summary: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation
-    of objects, calling methods and accessing fields.
+  summary: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation of objects, calling methods and accessing fields.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
