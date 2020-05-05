@@ -14,7 +14,7 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -36,11 +36,11 @@ requirements:
     - {{posix}}zip               # [win]
   host:
     - r-base
-    - openjdk 8.*
+    - openjdk 11.*
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
-    - openjdk 8.*
+    - openjdk 11.*
 
 test:
   commands:
