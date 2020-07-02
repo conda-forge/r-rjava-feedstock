@@ -3,7 +3,7 @@ About r-rjava
 
 Home: http://www.rforge.net/rJava/
 
-Package license: GPL-2
+Package license: GPL-2.0-only
 
 Feedstock license: BSD 3-Clause
 
