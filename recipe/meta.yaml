@@ -49,7 +49,7 @@ test:
 
 about:
   home: http://www.rforge.net/rJava/
-  license: GPL-2-only
+  license: GPL-2.0-only
   summary: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation of objects, calling methods and accessing fields.
   license_family: GPL2
   license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
