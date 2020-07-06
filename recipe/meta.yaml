@@ -36,6 +36,7 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - pcre2  # [osx]
     - openjdk 8.*
   run:
     - r-base

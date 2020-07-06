@@ -5,7 +5,7 @@ Home: http://www.rforge.net/rJava/
 
 Package license: GPL-2.0-only
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation of objects, calling methods and accessing fields.
 
