@@ -14,11 +14,11 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 3
+  number: 4
   rpaths:
     - lib/R/lib/
     - lib/
-    - jre/lib/amd64/server/
+    - lib/server/
 
 requirements:
   build:
@@ -37,11 +37,11 @@ requirements:
   host:
     - r-base
     - pcre2  # [osx]
-    - openjdk 8.*
+    - openjdk
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - openjdk 8.*
+    - openjdk
 
 test:
   commands:
