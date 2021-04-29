@@ -1,4 +1,4 @@
-{% set version = "0.9-13" %}
+{% set version = "1.0-4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rJava_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
-  sha256: 5b1688f5044476b34f71d868b222ac5fce3a088f0c2b9e4591c1e48f3d8c75f4
+  sha256: 1d4682796f3d3ae3593af22408d27c85a72549d2b156213c8bc410723983a9e5
 
 build:
   merge_build_host: true  # [win]
-  number: 5
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
