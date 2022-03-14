@@ -3,3 +3,6 @@ bot:
 conda_forge_output_validation: true
 provider:
   win: azure
+github:
+  branch_name: main
+  tooling_branch_name: main
