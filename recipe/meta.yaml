@@ -14,11 +14,12 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
     - lib/server/
+    - lib/jvm/lib/server/
 
 requirements:
   build:
