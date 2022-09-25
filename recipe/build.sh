@@ -1,10 +1,10 @@
 #!/bin/bash
-export LD_LIBRARY_PATH=$PREFIX/lib/jvm/lib/server/
 if [[ $target_platform =~ linux.* ]] || [[ $target_platform == win-32 ]] || [[ $target_platform == win-64 ]] || [[ $target_platform == osx-64 ]]; then
   export DISABLE_AUTOBREW=1
   export LD_LIBRARY_PATH=${PREFIX}/lib/server/
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX/lib/jvm/lib/server
   $R CMD javareconf
-  LD_PRELOAD=$PREFIX/lib/jvm/lib/server/libjvm.so $R CMD INSTALL --build .
+  $R CMD INSTALL --build .
 else
   mkdir -p $PREFIX/lib/R/library/rJava
   mv * $PREFIX/lib/R/library/rJava
