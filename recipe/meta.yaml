@@ -13,12 +13,14 @@ source:
   sha256: e290d0493317a5d6c452793e92baa914e37ef03faef19b2e436329b4ec8658c6
 
 build:
+  skip: True  # [win]
   merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
     - lib/server/
+    - lib/jvm/lib/server/
 
 requirements:
   build:
