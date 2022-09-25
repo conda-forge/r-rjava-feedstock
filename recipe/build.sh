@@ -4,7 +4,7 @@ if [[ $target_platform =~ linux.* ]] || [[ $target_platform == win-32 ]] || [[ $
   export DISABLE_AUTOBREW=1
   export LD_LIBRARY_PATH=${PREFIX}/lib/server/
   $R CMD javareconf
-  $R CMD INSTALL --build .
+  LD_PRELOAD=$PREFIX/lib/jvm/lib/server/libjvm.so $R CMD INSTALL --build .
 else
   mkdir -p $PREFIX/lib/R/library/rJava
   mv * $PREFIX/lib/R/library/rJava
