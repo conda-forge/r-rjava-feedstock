@@ -7,7 +7,7 @@ index 757ca49..e9ced1f 100644
      ## if this is at least 1.8 we can set source/target
      ## it is mandatory for 14 (and may be earlier) due to yield
 -    tgt=`"${JAVA_HOME}/bin/java" -cp tools getsp -minver 8`
-+    tgt=`"${JAVA_HOME}/bin/java.exe" -cp tools getsp -minver 8`
++    tgt=`"${PREFIX}/LIBRARY/bin/java.exe" -cp tools getsp -minver 8`
      echo "Is the Java version at least 1.8 ... $tgt"
      if [ x$tgt = xyes ]; then
         echo 'JFLAGS=-source 1.8 -target 1.8 -h .' >> src/Makefile.wconf
