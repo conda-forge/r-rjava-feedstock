@@ -1,3 +1,28 @@
+diff --git a/jri/Makevars.win b/jri/Makevars.win
+index 64047b5..7f44ed1 100644
+--- a/jri/Makevars.win
++++ b/jri/Makevars.win
+@@ -1,15 +1,15 @@
+ R_HOME=$(RHOME)
+-JAVA_HOME=$(JAVAHOME)
++JAVA_HOME=$(PREFIX)/Library
+ JAVAINC=-I$(JAVAHOME)/include -I$(JAVAHOME)/include/win32
+ RINC=-I$(R_HOME)/include
+ JNISO=.dll
+ JAVA_LIBS=-Lwin32 -ljvm
+ JNILD=-shared $(JAVA_LIBS) -L$(RHOME)/src/gnuwin32 -L$(RHOME)/bin$(R_ARCH) -lR -Wl,--kill-at
+ CFLAGS+=-DWin32 -D_JNI_IMPLEMENTATION_
+-JAVA_PROG=$(JAVAHOME)/bin/java
+-JAVA=$(JAVAHOME)/bin/java
+-JAVAC=$(JAVAHOME)/bin/javac
+-JAR=$(JAVAHOME)/bin/jar
++JAVA_PROG=$(JAVAHOME)/bin/java.exe
++JAVA=$(JAVAHOME)/bin/java.exe
++JAVAC=$(JAVAHOME)/bin/javac.exe
++JAR=$(JAVAHOME)/bin/jar.exe
+ JRIDEPS=win32/libjvm.dll.a
+ JNIPREFIX=
+ PLATFORMT=run.bat
 diff --git a/jri/configure.win b/jri/configure.win
 index 757ca49..e9ced1f 100644
 --- a/jri/configure.win
