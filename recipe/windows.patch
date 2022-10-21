@@ -1,12 +1,13 @@
 diff --git a/jri/Makevars.win b/jri/Makevars.win
-index 64047b5..89d5b15 100644
+index 64047b5..63b9b9f 100644
 --- a/jri/Makevars.win
 +++ b/jri/Makevars.win
 @@ -1,15 +1,15 @@
  R_HOME=$(RHOME)
 -JAVA_HOME=$(JAVAHOME)
+-JAVAINC=-I$(JAVAHOME)/include -I$(JAVAHOME)/include/win32
 +JAVA_HOME=$(PREFIX)/Library
- JAVAINC=-I$(JAVAHOME)/include -I$(JAVAHOME)/include/win32
++JAVAINC=-I$(PREFIX)/Library/include -I$(PREFIX)/Library/include/win32
  RINC=-I$(R_HOME)/include
  JNISO=.dll
  JAVA_LIBS=-Lwin32 -ljvm
