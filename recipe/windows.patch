@@ -6,7 +6,7 @@ index 0b28d1b..dd6814d 100644
  ifeq ($(JAVA_HOME),)
  JAVA_HOME:=$(DEFAULT_JAVA_HOME)
  endif
-+JAVA_HOME=$(PREFIX)/Library
++JAVA_HOME=$(JAVA_HOME)/../../
 
  $(warning JAVA_HOME is $(JAVA_HOME))
 
