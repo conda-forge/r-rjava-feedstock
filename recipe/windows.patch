@@ -1,14 +1,15 @@
 diff --git a/src/Makevars.win b/src/Makevars.win
-index 0b28d1b..dd6814d 100644
+index 0b28d1b..371719d 100644
 --- a/src/Makevars.win
 +++ b/src/Makevars.win
-@@ -16,6 +16,7 @@ DEFAULT_JAVA_HOME=C:\\jdk1.4.2_04
- ifeq ($(JAVA_HOME),)
- JAVA_HOME:=$(DEFAULT_JAVA_HOME)
- endif
-+JAVA_HOME=$(JAVA_HOME)/../../
+@@ -21,7 +21,7 @@ $(warning JAVA_HOME is $(JAVA_HOME))
 
- $(warning JAVA_HOME is $(JAVA_HOME))
+ # normally you don't have to touch this unless you want to add
+ # debugging flags like -DRJ_DEBUG or -DRJ_PROFILE to PKG_CFLAGS
+-JAVA_INCLUDES=$(JAVA_HOME)/include $(JAVA_HOME)/include/win32
++JAVA_INCLUDES=$(JAVA_HOME)/../../include $(JAVA_HOME)/../../include/win32
+ PKG_CPPFLAGS = -D_R_ -DWin32 -Ijvm-w32 -I$(RHOME)/src/include $(JAVA_INCLUDES:%=-I%)
+ PKG_LIBS = -Ljvm-w32 -ljvm.dll
 
 diff --git a/jri/Makevars.win b/jri/Makevars.win
 index 64047b5..63b9b9f 100644
