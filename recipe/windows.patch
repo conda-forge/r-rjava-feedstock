@@ -1,3 +1,15 @@
+diff --git a/src/Makevars.win b/src/Makevars.win
+index 0b28d1b..dd6814d 100644
+--- a/src/Makevars.win
++++ b/src/Makevars.win
+@@ -16,6 +16,7 @@ DEFAULT_JAVA_HOME=C:\\jdk1.4.2_04
+ ifeq ($(JAVA_HOME),)
+ JAVA_HOME:=$(DEFAULT_JAVA_HOME)
+ endif
++JAVA_HOME=$(PREFIX)/Library
+
+ $(warning JAVA_HOME is $(JAVA_HOME))
+
 diff --git a/jri/Makevars.win b/jri/Makevars.win
 index 64047b5..63b9b9f 100644
 --- a/jri/Makevars.win
