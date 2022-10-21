@@ -16,10 +16,10 @@ index 64047b5..89d5b15 100644
 -JAVA=$(JAVAHOME)/bin/java
 -JAVAC=$(JAVAHOME)/bin/javac
 -JAR=$(JAVAHOME)/bin/jar
-+JAVA_PROG=$(PREFIX)/bin/java.exe
-+JAVA=$(PREFIX)/bin/java.exe
-+JAVAC=$(PREFIX)/bin/javac.exe
-+JAR=$(PREFIX)/bin/jar.exe
++JAVA_PROG=$(PREFIX)/Library/bin/java.exe
++JAVA=$(PREFIX)/Library/bin/java.exe
++JAVAC=$(PREFIX)/Library/bin/javac.exe
++JAR=$(PREFIX)/Library/bin/jar.exe
  JRIDEPS=win32/libjvm.dll.a
  JNIPREFIX=
  PLATFORMT=run.bat
