@@ -12,4 +12,4 @@ autoconf
 pushd jri
   autoconf
 popd
-${R} CMD INSTALL --build . ${R_ARGS}
+${R} CMD INSTALL --build . ${R_ARGS:-}
