@@ -10,6 +10,7 @@ if [[ "${target_platform}" == linux-* ]]; then
   export LD_LIBRARY_PATH=${PREFIX}/lib/server/
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX/lib/jvm/lib/server
 fi
+export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib/R/lib"
 
 ${R} CMD javareconf
 
