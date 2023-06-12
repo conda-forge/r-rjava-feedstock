@@ -6,6 +6,10 @@ export DISABLE_AUTOBREW=1
 
 # ${R_ARGS} necessary to support cross-compilation
 export PATH=$PATH:$JAVA_HOME/bin
+if [[ "${target_platform}" == linux-* ]]; then
+  export LD_LIBRARY_PATH=${PREFIX}/lib/server/
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX/lib/jvm/lib/server
+fi
 
 ${R} CMD javareconf
 
