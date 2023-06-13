@@ -11,10 +11,12 @@ source:
     - {{ cran_mirror }}/src/contrib/rJava_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
   sha256: e290d0493317a5d6c452793e92baa914e37ef03faef19b2e436329b4ec8658c6
+  patches:
+    - 0001-Disable-some-cross-compile-checks.patch  # [build_platform != target_platform]
 
 build:
   merge_build_host: true  # [win]
-  number: 5
+  number: 6
   rpaths:
     - lib/R/lib/
     - lib/
@@ -23,6 +25,7 @@ build:
 
 requirements:
   build:
+    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ posix }}filesystem        # [win]
