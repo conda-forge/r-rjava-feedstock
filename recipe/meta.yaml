@@ -1,4 +1,4 @@
-{% set version = "1.0-10" %}
+{% set version = "1.0-11" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rJava_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
-  sha256: b5826818e5c5819d8117f692073e5bd3cc93320a6d6c2ccc34eb5c96b193396b
+  sha256: 9ea0ccf5553d86f7de8649a8324766c4f0810f35b7be561640dd87fd37986417
   patches:
     - 0001-Disable-some-cross-compile-checks.patch  # [build_platform != target_platform]
 
