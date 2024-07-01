@@ -19,7 +19,7 @@ cran_mirror:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pcre2:
-- '10.43'
+- '10.44'
 pin_run_as_build:
   r-base:
     min_pin: x.x
