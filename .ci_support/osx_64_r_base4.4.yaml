@@ -28,3 +28,7 @@ r_base:
 - '4.4'
 target_platform:
 - osx-64
+xz:
+- '5'
+zlib:
+- '1'
