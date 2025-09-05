@@ -40,9 +40,9 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - liblzma-devel
     - openjdk
     - pcre2  # [osx]
-    - xz
     - zlib
   run:
     - r-base
