@@ -21,7 +21,7 @@ liblzma_devel:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pcre2:
-- '10.45'
+- '10.46'
 pin_run_as_build:
   r-base:
     min_pin: x.x
