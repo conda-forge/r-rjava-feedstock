@@ -14,7 +14,7 @@ source:
     - 0001-Disable-some-cross-compile-checks.patch  # [build_platform != target_platform]
 
 build:
-  number: 3
+  number: 4
   rpaths:
     - lib/R/lib/
     - lib/
