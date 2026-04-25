@@ -16,7 +16,7 @@ ${R} CMD javareconf
 
 autoreconf --install
 autoconf
-pushd jri
+pushd src/jri
   autoconf
 popd
 ${R} CMD INSTALL --build . ${R_ARGS:-}

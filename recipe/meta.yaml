@@ -10,8 +10,8 @@ source:
     - {{ cran_mirror }}/src/contrib/rJava_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rJava/rJava_{{ version }}.tar.gz
   sha256: a4db39f39cdb05dbfa667ea6e4db9fd3402f395d9ec1a50a18d0397927f1f552
-  patches:
-    - 0001-Disable-some-cross-compile-checks.patch  # [build_platform != target_platform]
+  # patches:
+  #   - 0001-Disable-some-cross-compile-checks.patch  # [build_platform != target_platform]
 
 build:
   number: 0
